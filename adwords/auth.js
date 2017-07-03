@@ -26,10 +26,10 @@ class AdwordsAuth {
         
         let params = {
             access_type: 'offline',
-            prompt: 'force',
+            prompt: 'consent',
             scope: 'https://www.googleapis.com/auth/adwords'
         };
-        
+
         for(var key in options) { params[key] = options[key] };
 
         return this.oauth2Client.generateAuthUrl(params);
