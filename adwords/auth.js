@@ -22,12 +22,17 @@ class AdwordsAuth {
      * @access public
      * @return {string} a URL to redirect to
      */
-    generateAuthenticationUrl() {
-        return this.oauth2Client.generateAuthUrl({
+    generateAuthenticationUrl(options) {
+        
+        let params = {
             access_type: 'offline',
-            prompt: 'consent',
+            prompt: 'force',
             scope: 'https://www.googleapis.com/auth/adwords'
-        });
+        };
+        
+        for(var key in options) { params[key] = options[key] };
+
+        return this.oauth2Client.generateAuthUrl(params);
     }
 
     /**
